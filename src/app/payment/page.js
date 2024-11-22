@@ -1,7 +1,15 @@
 import Image from "next/image";
 
+//   Det her er noget helt nyt man kan bruge, men det ikke helt klart endnu
+// Det gør at komponentet ikke er asynkront og syntaksen er lidt anderledes
+// import { use } from "react";
+
 const page = async ({ searchParams }) => {
   //   const queryParams = await searchParams;
+
+  //   Det her er noget helt nyt man kan bruge, men det ikke helt klart endnu
+  //   const { color, size } = use(searchParams);
+
   const { color, size } = await searchParams;
 
   return (
