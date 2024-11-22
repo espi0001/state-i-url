@@ -11,8 +11,9 @@ export default function Home() {
   const colors = ["White", "Black", "Grey"];
   const searchParams = useSearchParams();
 
-  console.log(searchParams);
+  // console.log(searchParams);
 
+  // Her bruger vi useCallback for at oprette en funktion der kan opdatere query params
   const createQueryString = useCallback(
     (name, value) => {
       const params = new URLSearchParams(searchParams);
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <main className="flex-1">
       <section className="mx-auto grid max-w-7xl p-8">
+        {/* vi bruger form for at skabe en formular da det er en "formular" man skal udfylde når man vælger størrelse og farve */}
         <form className="grid gap-2 sm:grid-cols-2 lg:grid-cols-8">
           <div className="md:col-span-1 lg:col-span-5">
             <div className="aspect-square overflow-hidden bg-neutral-50">
