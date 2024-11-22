@@ -37,7 +37,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col pt-6 sm:col-span-1 sm:px-6 sm:pt-0 lg:col-span-3 lg:pt-16">
             <div>
-              <h1 className="mb-4 flex-auto text-3xl font-bold tracking-tight text-neutral-900">Bare en T-shirt</h1>
+              <h1 className="mb-4 flex-auto text-3xl font-medium tracking-tight text-neutral-900">Bare en t-shirt</h1>
               <p className="mb-8 text-sm">kr. 90.00</p>
               <fieldset className="my-4">
                 <legend className="sr-only">Sizes</legend>
@@ -45,31 +45,44 @@ export default function Home() {
                 <div className="flex flex-wrap gap-3">
                   {sizes.map((size, index) => {
                     return (
-                      <Link key={index} className={`${searchParams.get("size") == size && "border-neutral-100"} border-neutral-200 text-neutral-900 hover:bg-neutral-100 relative flex min-w-[5ch] items-center justify-center rounded border p-3 text-center text-sm font-semibold`} href={`?${createQueryString("size", size)}`}>
-                        {size}
-                      </Link>
+                      <div key={index}>
+                        <label for={size}>{size}</label>
+                        <input type="radio" name="size" id={size} value={size} />
+                      </div>
                     );
                   })}
                 </div>
+
+                {/* ide! Merge med link og form */}
+                {/* <div className="flex flex-wrap gap-3">
+                  {sizes.map((size, index) => {
+                    return (
+                      <Link href={`?${createQueryString("size", size)}`} className={`${searchParams.get("size") == size && "border-neutral-100"} border-neutral-200 text-neutral-900 hover:bg-neutral-100 relative flex min-w-[5ch] items-center justify-center rounded border p-3 text-center text-sm font-semibold`}>
+                        <label for={size}>{size}</label>
+                        <input type="radio" name="size" id={size} value={size} key={index} checked={searchParams.get("size") == size} />
+                      </Link>
+                    );
+                  })}
+                </div> */}
               </fieldset>
               <fieldset className="my-4">
                 <legend className="sr-only">Colors</legend>
+
                 <div className="flex flex-wrap gap-3">
                   {colors.map((color, index) => {
                     return (
-                      <Link key={index} className={`${searchParams.get("color") == color && "border-neutral-100"}border-neutral-200 text-neutral-900 hover:bg-neutral-100 relative flex min-w-[5ch] items-center justify-center rounded border p-3 text-center text-sm font-semibold`} href={`?${createQueryString("color", color)}`}>
-                        {color}
-                      </Link>
+                      <div key={index}>
+                        <label for={color}>{color}</label>
+                        <input type="radio" name="color" id={color} value={color} />
+                      </div>
                     );
                   })}
                 </div>
               </fieldset>
               <div className="mt-8">
-                <Link href={`/payment?${searchParams}`}>
-                  <button type="submit" className="h-12 items-center rounded-md bg-neutral-900 px-6 py-3 text-base font-medium leading-6 text-white shadow hover:bg-neutral-800">
-                    <span>Add to cart</span>
-                  </button>
-                </Link>
+                <button type="submit" className="h-12 items-center rounded-md bg-neutral-900 px-6 py-3 text-base font-medium leading-6 text-white shadow hover:bg-neutral-800">
+                  <span>Add to cart</span>
+                </button>
               </div>
               <div className="mt-8 space-y-6 text-sm text-neutral-500">
                 <div>
